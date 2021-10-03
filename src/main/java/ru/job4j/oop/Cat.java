@@ -20,11 +20,11 @@ public class Cat {
 
     public static void main(String[] args) {
         Cat gav = new Cat();
-        gav.eat("kotleta");
+        gav.eat("Rissole");
         gav.giveNick("Gav");
         gav.show();
         Cat black = new Cat();
-        black.eat("fish");
+        black.eat("Fish");
         black.giveNick("Black");
         black.show();
     }
