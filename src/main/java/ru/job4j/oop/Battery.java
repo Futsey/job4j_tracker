@@ -17,9 +17,9 @@ public class Battery {
         Battery batteryOne = new Battery(56);
         Battery batteryTwo = new Battery(3);
         System.out.println("Заряд первой батареи: " + batteryOne.load
-                + ".\n Заряд второй батареи: " + batteryTwo.load);
+                + System.lineSeparator() + ". Заряд второй батареи: " + batteryTwo.load);
         batteryOne.exchange(batteryTwo);
         System.out.println("Заряд первой батареи: " + batteryOne.load
-                + ".\n Заряд второй батареи: " + batteryTwo.load);
+                + System.lineSeparator() + ". Заряд второй батареи: " + batteryTwo.load);
     }
 }
