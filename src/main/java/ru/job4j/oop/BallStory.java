@@ -7,8 +7,8 @@ public class BallStory {
         Hare greyEar = new Hare();
         Wolf sharpTooth = new Wolf();
         Fox fireTail = new Fox();
-        greyEar.tryEat(kolobock);
-        sharpTooth.tryEat(kolobock);
-        fireTail.tryEat(kolobock);
+        greyEar.tryEat(kolobock.tryRun(false));
+        sharpTooth.tryEat(kolobock.tryRun(false));
+        fireTail.tryEat(kolobock.tryRun(true));
     }
 }

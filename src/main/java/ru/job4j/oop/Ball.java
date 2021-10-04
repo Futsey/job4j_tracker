@@ -2,13 +2,13 @@ package ru.job4j.oop;
 
 public class Ball {
 
-    public void tryRun(boolean condition) {
-        if (condition) {
-            System.out.println("RIP: Colobock. Bright memory of this yeast ball");
+    public Ball tryRun(boolean condition) {
+        boolean result = false;
+        if (!condition) {
+            System.out.println("RIP: Kolobock. Bright memory of this yeast ball");
         } else {
-            System.out.println("Colobock run away!!!");
+            System.out.println("Kolobock run away!!!");
         }
-        return;
+        return null;
     }
-
 }
