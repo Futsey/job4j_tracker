@@ -1,5 +1,7 @@
 package ru.job4j.oop;
 
+import com.sun.source.tree.IfTree;
+
 public class Triangle {
 
         private Point first;
@@ -18,8 +20,7 @@ public class Triangle {
         }
 
         public boolean exist(double ab, double ac, double bc) {
-            boolean exist = (ab + ac) > bc || (ab + bc) > ac || (bc + ac) > ab ? true : false;
-            return exist;
+            return (ab + ac) > bc && (ab + bc) > ac && (bc + ac) > ab;
         }
 
         public double area() {

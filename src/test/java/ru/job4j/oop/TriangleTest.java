@@ -46,4 +46,14 @@ public class TriangleTest {
         double rsl = triangle.area();
         assertThat(rsl, closeTo(249, 0.001));
     }
+
+    @Test
+    public void areaOut() {
+        Point a = new Point(1, 1);
+        Point b = new Point(1, 1);
+        Point c = new Point(3, 3);
+        Triangle triangle = new Triangle(a, b, c);
+        double rsl = triangle.area();
+        assertThat(rsl, closeTo(0, 0.001));
+    }
 }
