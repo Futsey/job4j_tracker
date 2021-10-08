@@ -2,12 +2,11 @@ package ru.job4j.oop;
 
 public class Programmer extends Engineer {
 
-    private String programmerSkills;
     private String gitLink;
 
-    public Programmer(String programmerSkills, String gitLink) {
-        super();
-        this.programmerSkills = programmerSkills;
+    public Programmer(String name, String surname, String education, String birthday,
+                      String specialization, int workExperience, String gitLink) {
+        super(name, surname, education, birthday, specialization, workExperience);
         this.gitLink = gitLink;
     }
 
@@ -20,7 +19,8 @@ public class Programmer extends Engineer {
     }
 
     public static void main(String[] args) {
-        Programmer javaStudent = new Programmer("ZeroSkill", "https://github.com/Futsey");
+        Programmer javaStudent = new Programmer("Andrew", "Petrushin", "university degree",
+                "09 may",  "Java Dev", 0, "https://github.com/Futsey");
         Pioneer petya = new Pioneer();
         javaStudent.getName();
         javaStudent.getSurname();

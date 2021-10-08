@@ -4,8 +4,9 @@ public class Dantist extends Doctor {
 
     private String dantistSpecialization;
 
-    public Dantist() {
-        super();
+    public Dantist(String name, String surname, String education, String birthday,
+                   String specialization, int workExperience, String dantistSpecialization) {
+        super(name, surname, education, birthday, specialization, workExperience);
         this.dantistSpecialization = dantistSpecialization;
     }
 
@@ -14,7 +15,8 @@ public class Dantist extends Doctor {
     }
 
     public static void main(String[] args) {
-        Dantist toothMaster = new Dantist();
+        Dantist toothMaster = new Dantist("Nafanya", "Batkovich", "university degree",
+                "01 january 2002", "Dantist", 1, "surgery");
         Wolf sharpTooth = new Wolf();
         toothMaster.getName();
         toothMaster.getSurname();
