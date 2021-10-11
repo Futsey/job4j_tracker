@@ -2,22 +2,20 @@ package ru.job4j.pojo;
 
 public class Library {
 
-    public static Book[] swap(Book[] array, int firstElementToSwap, int secondElementToSwap) {
-        Book temp = array[firstElementToSwap];
-        array[firstElementToSwap] = array[secondElementToSwap];
-        array[secondElementToSwap] = temp;
+    public static Book[] swap(Book[] array, int source, int dest) {
+        Book temp = array[source];
+        array[source] = array[dest];
+        array[dest] = temp;
         return array;
     }
 
-    public static boolean wordFinder(Book[] array, String wordToFind) {
-        boolean found = false;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(wordToFind)) {
-                found = true;
-                System.out.println("Book " + wordToFind + " found." + "Index of book: " + array[i]);
+    public static void wordFinder(Book[] books, String wordToFind) {
+        for (Book book : books) {
+            if (wordToFind.equals(book.getName())) {
+                System.out.println("Searched book title: " + book.getName() + "; "
+                        + book.getPageCount() + " pages");
             }
         }
-        return found;
     }
 
         public static void main(String[]args) {
@@ -27,16 +25,16 @@ public class Library {
             Book cleanCode = new Book("Clean code", 400);
             Book[] books = {redBook, greenBook, whiteBook, cleanCode};
 
-            for (Book array : books) {
-                System.out.println("Book title: " + array.getName() + "; "
-                        + array.getPageCount() + " pages");
+            for (Book book : books) {
+                System.out.println("Book title: " + book.getName() + "; "
+                        + book.getPageCount() + " pages");
             }
             swap(books, 0, 3);
-            for (Book array : books) {
-                System.out.println("After swap: " + "Book title: " + array.getName() + "; "
-                        + array.getPageCount() + " pages");
+            for (Book book : books) {
+                System.out.println("After swap: " + "Book title: " + book.getName() + "; "
+                        + book.getPageCount() + " pages");
             }
-            String wordToFind = "Green Book";
+            String wordToFind = "Clean code";
             wordFinder(books, wordToFind);
     }
 }
