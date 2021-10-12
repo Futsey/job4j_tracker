@@ -1,6 +1,7 @@
 package ru.job4j.pojo;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -24,7 +25,7 @@ public class LicenseTest {
         first.setCode("audio");
         License second = new License();
         second.setCode("video");
-        assertThat(first, is(IsNot.not(equalTo(second))));
+        assertNotEquals(first, second);
     }
 
     @Test
