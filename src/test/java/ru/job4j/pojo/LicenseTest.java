@@ -24,7 +24,7 @@ public class LicenseTest {
         License first = new License();
         first.setCode("audio");
         License second = new License();
-        second.setCode("video");
+        second.setCode("Audio");
         assertNotEquals(first, second);
     }
 
