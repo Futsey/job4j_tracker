@@ -15,13 +15,15 @@ public class Matches {
             int matches = Integer.parseInt(input.nextLine());
             turn = !turn;
             count -= matches;
+            if (count < 0) {
+                System.out.print("У нас всего 11 спичек, а ");
+                count += matches;
+            }
+            System.out.println("на столе осталось: " + count);
             if (count == 0) {
                 break;
             }
-            if (count < 0) {
-                System.out.println("У нас всего 11 спичек, а потому выиграл: ");
-                count += matches;
-            }
+
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
