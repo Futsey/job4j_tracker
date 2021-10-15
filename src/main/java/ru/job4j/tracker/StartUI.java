@@ -1,13 +1,20 @@
 package ru.job4j.tracker;
 
-import java.time.LocalDateTime;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class StartUI {
 
+    public void init(Scanner scanner, Tracker tracker) {
+
+    }
+
+    private void showMenu() {
+
+    }
+
     public static void main(String[] args) {
-        Item testItem = new Item();
-        System.out.println(testItem);
+        Scanner scanner = new Scanner(System.in);
+        Tracker tracker = new Tracker();
+        new StartUI().init(scanner, tracker);
     }
 }
