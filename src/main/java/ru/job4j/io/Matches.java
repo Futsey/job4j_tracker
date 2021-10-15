@@ -9,21 +9,23 @@ public class Matches {
         System.out.println("Игра 11.");
         boolean turn = true;
         int count = 11;
-        while (count > 0) {
+        while (count > 0 && count <= 11) {
             String player = turn ? "Первый игрок" : "Второй игрок";
             System.out.println(player + " введите число от 1 до 3:");
             int matches = Integer.parseInt(input.nextLine());
             turn = !turn;
-            count -= matches;
-            if (count < 0) {
-                System.out.print("У нас всего 11 спичек, а ");
-                count += matches;
+            if (matches >= 1 && matches <= 3) {
+                count -= matches;
+                System.out.println("На столе осталось " + count);
+                if (count < 0) {
+                    System.out.println("Нет такого количества спичек на столе");
+                    count += matches;
+                    turn = !turn;
+                }
+            } else {
+                System.out.println("Вы можете убрать только от 1 до 3 спичек");
+                turn = !turn;
             }
-            System.out.println("на столе осталось: " + count);
-            if (count == 0) {
-                break;
-            }
-
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
