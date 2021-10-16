@@ -18,7 +18,8 @@ public class Bus implements Transport {
         } else if (select == 2) {
             run = false;
         } else {
-            System.out.println("Вы ввели неверное значение. Это автобус, он либо 1 либо 2 понимает...");
+            System.out.println("Вы ввели неверное значение. "
+                    + System.lineSeparator() + "Это автобус, он либо 1 либо 2 понимает...");
         }
         return run;
     }
