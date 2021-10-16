@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Bus implements Transport {
 
     @Override
-    public boolean drive() {
+    public void drive() {
         System.out.println("Привести в движение автобус?"
         + System.lineSeparator() + "1. Завести автобус"
         + System.lineSeparator() + "2. Заглушить двигатель");
@@ -21,13 +21,11 @@ public class Bus implements Transport {
             System.out.println("Вы ввели неверное значение. "
                     + System.lineSeparator() + "Это автобус, он либо 1 либо 2 понимает...");
         }
-        return run;
     }
 
     @Override
-    public int passengers(int passengers) {
+    public void passengers(int passengers) {
         System.out.println("В салоне находится: " + passengers + "пассажиров");
-        return 0;
     }
 
     @Override

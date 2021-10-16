@@ -2,9 +2,9 @@ package ru.job4j.tracker;
 
 public interface Transport {
 
-    boolean drive();
+    void drive();
 
-    int passengers(int passengers);
+    void passengers(int passengers);
 
     int tankUp(int fuelQuantity);
 }
