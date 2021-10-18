@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.Scanner;
 
-public class Bus implements Transport {
+public class Bus implements Transport, Vehicle {
 
     @Override
     public void drive() {
@@ -19,13 +19,15 @@ public class Bus implements Transport {
             run = false;
         } else {
             System.out.println("Вы ввели неверное значение. "
-                    + System.lineSeparator() + "Это автобус, он либо 1 либо 2 понимает...");
+                    + System.lineSeparator() + "Это автобус, он либо 1 либо 2 понимает..."
+                    + System.lineSeparator());
         }
     }
 
     @Override
     public void passengers(int passengers) {
-        System.out.println("В салоне находится: " + passengers + "пассажиров");
+        System.out.println("В салоне находится: " + passengers + " пассажиров"
+                + System.lineSeparator());
     }
 
     @Override
@@ -33,6 +35,13 @@ public class Bus implements Transport {
         int fuelPrice = 45;
         int toPay = fuelPrice * fuelQuantity;
         return toPay;
+    }
+
+    public void move() {
+        System.out.println("Вот мы в автобусе сидим"
+                + System.lineSeparator() + "И сидим, и сидим"
+                + System.lineSeparator() + "И из окошечка глядим"
+                + System.lineSeparator() + "Все глядим!");
     }
 
     public static void main(String[] args) {
