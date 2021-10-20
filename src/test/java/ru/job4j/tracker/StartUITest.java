@@ -12,12 +12,13 @@ public class StartUITest {
 
     @Test
     public void whenCreateItem() {
+        Output output = new ConsoleOutput();
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
+                new CreateAction(output),
                 new EndAction()
         };
         new StartUI().init(in, tracker, actions);
@@ -54,5 +55,4 @@ public class StartUITest {
         new StartUI().init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
-
 }
