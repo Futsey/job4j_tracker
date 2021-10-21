@@ -4,6 +4,12 @@ import ru.job4j.tracker.Input;
 
 public class StartUI {
 
+    private final Output out;
+
+    public StartUI(Output out) {
+        this.out = out;
+    }
+
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
@@ -29,6 +35,6 @@ public class StartUI {
              new CreateAction(output), new ShowAllAction(), new EditAction(), new DeleteAction(),
                 new FindByIDAction(), new FindByNameAction(), new EndAction()
             };
-        new StartUI().init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         }
 }
