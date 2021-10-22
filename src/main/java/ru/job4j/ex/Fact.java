@@ -10,7 +10,7 @@ public class Fact {
         int rsl = 1;
         if (n < 0) {
             throw new IllegalArgumentException("The value cannot be negative. "
-                    + "It should be positive number");
+                    + "It should be positive number or zero");
         }
         for (int index = 1; index <= n; index++) {
             rsl *= index;
