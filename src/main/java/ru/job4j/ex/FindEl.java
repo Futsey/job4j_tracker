@@ -4,9 +4,9 @@ public class FindEl {
 
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
         int rsl = -1;
-        for (int i = 0; i < value.length; i++) {
-            if (key.equals(value[i])) {
-                rsl = i;
+        for (int index = 0; index < value.length; index++) {
+            if (key.equals(value[index])) {
+                rsl = index;
                 break;
             }
         }
@@ -19,7 +19,7 @@ public class FindEl {
     public static void main(String[] args) {
         String[] array = {"1", "2", "3", null, "4", "5"};
         try {
-            System.out.println(indexOf(array, "keyword"));
+            indexOf(array, "22");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
