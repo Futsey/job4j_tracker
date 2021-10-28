@@ -25,13 +25,6 @@ public class SingleTracker {
         return tracker.findById(id);
     }
 
-    /*
-    *
-    * метод indexOf не можем реализовать, так как он приватный
-    * и используется в методе findById
-    *
-     */
-
     public Item[] findAll() {
         return tracker.findAll();
     }
