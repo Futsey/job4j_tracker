@@ -1,4 +1,3 @@
-/*
 
 package ru.job4j.tracker;
 
@@ -32,15 +31,33 @@ public class ValidateInputTest {
     }
 
     @Test
-    public void whenMultiValidInput() {
+    public void whenNegativeInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
                 new String[] {"-1"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected, is(1));
+        assertThat(selected, is(-1));
+    }
+
+    @Test
+    public void whenMultiInput() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"-1", "1", "2", "3"}
+        );
+        ValidateInput input = new ValidateInput(out, in);
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(-1));
+        ValidateInput input1 = new ValidateInput(out, in);
+        int selected1 = input.askInt("Enter menu:");
+        assertThat(selected1, is(1));
+        ValidateInput input2 = new ValidateInput(out, in);
+        int selected2 = input.askInt("Enter menu:");
+        assertThat(selected2, is(2));
+        ValidateInput input3 = new ValidateInput(out, in);
+        int selected3 = input.askInt("Enter menu:");
+        assertThat(selected3, is(3));
     }
 }
-
- */
