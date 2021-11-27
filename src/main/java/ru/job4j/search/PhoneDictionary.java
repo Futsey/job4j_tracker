@@ -19,9 +19,6 @@ public class PhoneDictionary {
                     || value.getPhone().contains(key)
                     || value.getAdress().contains(key)) {
                 rst.add(value);
-                System.out.println("Method find: found: " + value);
-            } else {
-                System.out.println("Method find: nothing found");
             }
         }
         return rst;
