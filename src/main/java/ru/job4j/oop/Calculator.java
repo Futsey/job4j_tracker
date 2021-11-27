@@ -21,18 +21,20 @@ public class Calculator {
     }
 
     public int sumAllOperation(int a) {
-        return a / x;
+        return sum(a) + multiply(a) + minus(a) + divide(a);
     }
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        int rslSum = calculator.sum(5);
+        int rslSum = Calculator.sum(5);
         int rslMult = calculator.multiply(5);
-        int rslMinus = calculator.minus(5);
+        int rslMinus = Calculator.minus(5);
         int rslDiv = calculator.divide(5);
-        System.out.println(rslSum);
-        System.out.println(rslMult);
-        System.out.println(rslMinus);
-        System.out.println(rslDiv);
+        int rslSumAll = calculator.sumAllOperation(5);
+        System.out.println("Method sum: " + rslSum);
+        System.out.println("Method multiply: " + rslMult);
+        System.out.println("Method minus: " + rslMinus);
+        System.out.println("Method divide: " + rslDiv);
+        System.out.println("Method sumAllOperation: " + rslSumAll);
     }
 }
