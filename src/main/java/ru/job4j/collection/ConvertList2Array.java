@@ -9,14 +9,10 @@ public class ConvertList2Array {
         int[][] dimensArray = new int[groups][cells];
         int row = 0, cell = 0;
         for (Integer num : list) {
-            if (cell < groups) {
-                dimensArray[row][cell] = num;
-                cell++;
-            } else if (row < groups) {
-                row++;
+            dimensArray[row][cell++] = num;
+            if (cell == cells) {
                 cell = 0;
-                dimensArray[row][cell] = num;
-                cell++;
+                row++;
             }
         }
         return dimensArray;
