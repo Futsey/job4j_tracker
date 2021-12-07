@@ -39,15 +39,6 @@ public class StartUI {
         Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
-                /*
-                new CreateAction(output),
-                new ShowAllAction(output),
-                new EditAction(output),
-                new DeleteAction(output),
-                new FindByIDAction(output),
-                new FindByNameAction(output),
-                new EndAction(output)
-                 */
                 actions.add(new CreateAction(output));
                 actions.add(new ShowAllAction(output));
                 actions.add(new EditAction(output));
