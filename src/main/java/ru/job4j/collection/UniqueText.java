@@ -13,10 +13,7 @@ public class UniqueText {
             check.add(el);
         }
         for (String elText : text) {
-            if (check.contains(elText)) {
-                rsl = true;
-                break;
-            } else {
+            if (!check.contains(elText)) {
                 rsl = false;
                 break;
             }
