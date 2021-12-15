@@ -8,8 +8,8 @@ public class UsageMap {
     public static void main(String[] args) {
         HashMap<String, String> user = new HashMap<>();
         user.put("boba@bob.com", "Bob Thornton");
-        for (Map.Entry<String, String> el : user.entrySet()) {
-            System.out.println(el);
+        for (Map.Entry<String, String> element : user.entrySet()) {
+            System.out.println(element);
         }
         user.put("Andrew@andrew.com", "Andrew Petrushin");
         user.put("Andrew@andrew.com", "Andrey petrushin");
