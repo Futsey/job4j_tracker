@@ -91,11 +91,14 @@ public class TrackerTest {
         items.add(new Item("Peas"));
         items.add(new Item("Groats"));
         items.add(new Item("Millet"));
+        Collections.sort(items, new ItemAscByName());
         List<Item> expected = new ArrayList<Item>();
-        expected.addAll(items);
-        Collections.sort(expected, new ItemAscByName());
-        assertTrue(expected.size() == items.size()
-                && expected.containsAll(items) && items.containsAll(expected));
+        expected.add(new Item("Beans"));
+        expected.add(new Item("Groats"));
+        expected.add(new Item("Millet"));
+        expected.add(new Item("Peas"));
+        expected.add(new Item("Rice"));
+        assertEquals(expected, items);
     }
 
     @Test
@@ -106,10 +109,13 @@ public class TrackerTest {
         items.add(new Item("Peas"));
         items.add(new Item("Groats"));
         items.add(new Item("Millet"));
+        Collections.sort(items, new ItemDescByName());
         List<Item> expected = new ArrayList<Item>();
-        expected.addAll(items);
-        Collections.sort(expected, new ItemDescByName());
-        assertTrue(expected.size() == items.size()
-                && expected.containsAll(items) && items.containsAll(expected));
+        expected.add(new Item("Rice"));
+        expected.add(new Item("Peas"));
+        expected.add(new Item("Millet"));
+        expected.add(new Item("Groats"));
+        expected.add(new Item("Beans"));
+        assertEquals(expected, items);
     }
 }
