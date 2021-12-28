@@ -52,12 +52,12 @@ public class Item {
             return false;
         }
         Item item = (Item) k;
-        return id == item.id && name.equals(item.name) && created.equals(item.created);
+        return id == item.id && name.equals(item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, created);
+        return Objects.hash(id, name);
     }
 
     @Override
