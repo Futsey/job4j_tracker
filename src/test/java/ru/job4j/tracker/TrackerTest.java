@@ -85,7 +85,7 @@ public class TrackerTest {
 
     @Test
     public void whenTestItemAscByName() {
-        List<Item> items= new ArrayList<Item>();
+        List<Item> items = new ArrayList<Item>();
         items.add(new Item("Beans"));
         items.add(new Item("Rice"));
         items.add(new Item("Peas"));
@@ -100,7 +100,7 @@ public class TrackerTest {
 
     @Test
     public void whenTestItemDescByName() {
-        List<Item> items= new ArrayList<Item>();
+        List<Item> items = new ArrayList<Item>();
         items.add(new Item("Beans"));
         items.add(new Item("Rice"));
         items.add(new Item("Peas"));
