@@ -1,14 +1,8 @@
 package ru.job4j.tracker;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-import java.util.logging.Formatter;
-
-import ru.job4j.collection.Job;
-import ru.job4j.tracker.StartUI;
 
 public class Item {
     private static final DateTimeFormatter FORMATTER
