@@ -44,14 +44,14 @@ public class Item {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object k) {
+        if (this == k) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (k == null || getClass() != k.getClass()) {
             return false;
         }
-        Item item = (Item) o;
+        Item item = (Item) k;
         return id == item.id && name.equals(item.name) && created.equals(item.created);
     }
 
