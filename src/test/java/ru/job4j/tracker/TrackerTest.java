@@ -2,11 +2,13 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.*;
 
 public class TrackerTest {
     @Test
@@ -79,5 +81,35 @@ public class TrackerTest {
         int id = bug.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
+    }
+
+    @Test
+    public void whenTestItemAscByName() {
+        List<Item> items= new ArrayList<Item>();
+        items.add(new Item("Beans"));
+        items.add(new Item("Rice"));
+        items.add(new Item("Peas"));
+        items.add(new Item("Groats"));
+        items.add(new Item("Millet"));
+        List<Item> expected = new ArrayList<Item>();
+        expected.addAll(items);
+        Collections.sort(expected, new ItemAscByName());
+        assertTrue(expected.size() == items.size()
+                && expected.containsAll(items) && items.containsAll(expected));
+    }
+
+    @Test
+    public void whenTestItemDescByName() {
+        List<Item> items= new ArrayList<Item>();
+        items.add(new Item("Beans"));
+        items.add(new Item("Rice"));
+        items.add(new Item("Peas"));
+        items.add(new Item("Groats"));
+        items.add(new Item("Millet"));
+        List<Item> expected = new ArrayList<Item>();
+        expected.addAll(items);
+        Collections.sort(expected, new ItemDescByName());
+        assertTrue(expected.size() == items.size()
+                && expected.containsAll(items) && items.containsAll(expected));
     }
 }
