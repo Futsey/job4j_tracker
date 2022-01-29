@@ -6,27 +6,12 @@ public class StringCompare implements Comparator<String> {
 
     @Override
     public int compare(String firstString, String secondString) {
-        int length = 0;
-        if (firstString.length() < secondString.length()) {
-            length = firstString.length();
-        } else {
-            length = secondString.length();
-        }
-        int rsl = 0;
-        for (int k = 0; k < length - 1; k++) {
-            if (firstString.charAt(k) > secondString.charAt(k)) {
-                rsl = 1;
-                break;
-            } else if (firstString.charAt(k) == secondString.charAt(k)) {
-                rsl = 0;
-            } else {
-                rsl = -1;
-                break;
+        int length = Math.min(firstString.length(), secondString.length());
+        for (int i = 0; i < length - 1; i++) {
+            if (firstString.charAt(i) != secondString.charAt(i)) {
+                return Character.compare(firstString.charAt(i), secondString.charAt(i));
             }
         }
-        if (rsl == 0) {
-            rsl = Integer.compare(firstString.length(), secondString.length());
-        }
-        return rsl;
+        return Integer.compare(firstString.length(), secondString.length());
     }
 }
