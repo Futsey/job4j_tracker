@@ -1,32 +1,58 @@
 package ru.job4j.bank;
 
 import java.util.Objects;
-
+/**
+ * Класс описывает пользователя банковской системы на стороне клиента по двум параметрам: имя и паспорт
+ * @author ANDREW PETRUSHIN (JOB4J Project)
+ * @version 1.0
+ */
 public class User {
+    /**
+     * У пользователя банковской системы на стороне клиента есть два параметра: имя и паспорт
+     */
     private String passport;
     private String username;
 
+    /**
+     * Для автоматической инициализации переменных конструктор явно изменен
+     * на конструктор с указанием полей имени и паспорта
+     */
     public User(String passport, String username) {
         this.passport = passport;
         this.username = username;
     }
 
+    /**
+     * Метод для записи личных данных пользователя (паспорт пользователя)
+     */
     public void setPassport(String passport) {
         this.passport = passport;
     }
 
+    /**
+     * Метод для чтения личных данных пользователя (паспорт пользователя)
+     */
     public String getPassport() {
         return passport;
     }
 
+    /**
+     * Метод для записи личных данных пользователя (имя пользователя)
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Метод для чтения личных данных пользователя (имя пользователя)
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Переопределяем метод сравнения паспортных данных пользователя
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -39,6 +65,14 @@ public class User {
         return Objects.equals(passport, user.passport);
     }
 
+    /**
+     * Переопределяем метод чтобы найти паспорт в коллекции.
+     * Согласно рукописи Д.Блоха "Вы должны переопределить hashCode() в каждом классе,
+     * который переопределяет equals(). Несоблюдение этого требования приведет
+     * к нарушению общего договора для Object.hashCode(),
+     * что предотвратит правильное функционирование вашего класса в сочетании со всеми коллекциями на основе хешей,
+     * включая HashMap, HashSet и Hashtable."
+     */
     @Override
     public int hashCode() {
         return Objects.hash(passport);
