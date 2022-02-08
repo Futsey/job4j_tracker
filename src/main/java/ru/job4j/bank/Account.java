@@ -51,9 +51,6 @@ public class Account {
         this.balance = balance;
     }
 
-    /**
-     * Переопределяем метод сравнения реквизитов пользователя
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -66,14 +63,6 @@ public class Account {
         return Objects.equals(requisite, account.requisite);
     }
 
-    /**
-     * Переопределяем метод чтобы найти паспорт в коллекции.
-     * Согласно рукописи Д.Блоха "Вы должны переопределить hashCode() в каждом классе,
-     * который переопределяет equals(). Несоблюдение этого требования приведет
-     * к нарушению общего договора для Object.hashCode(),
-     * что предотвратит правильное функционирование вашего класса в сочетании со всеми коллекциями на основе хешей,
-     * включая HashMap, HashSet и Hashtable."
-     */
     @Override
     public int hashCode() {
         return Objects.hash(requisite);

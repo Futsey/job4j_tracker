@@ -22,7 +22,9 @@ public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     /**
-     * Метод для добавления пользователя в систему
+     * Метод для добавления пользователя в систему.
+     * В аргументе принимаем экземпляр класса
+     * @see User
      */
     public void addUser(User user) {
         List<Account> acc = new ArrayList<Account>();
@@ -30,14 +32,21 @@ public class BankService {
     }
 
     /**
-     * Метод для удаления пользователя из системы
+     * Метод для удаления пользователя из системы.
+     * В аргументе (в качестве ключа нашего списка) принимаем экземпляр класса
+     * @see User
+     * По ключу стандартным методом Map.remove удаляем пользователя
      */
     public void deleteUser(User user) {
         users.remove(user);
     }
 
     /**
-     * Метод для добавления аккаунта пользователя в систему
+     * Метод для добавления аккаунта пользователя в систему.
+     * В аргументах принимаем экземпляр класса
+     * @see Account
+     * и аргумент паспорт типа String, данные которого будут добавлены в систему через метод
+     * {@link #findByPassport(String)}
      */
     public void addAccount(String passport, Account account) {
         User accExist = findByPassport(passport);
@@ -51,6 +60,8 @@ public class BankService {
 
     /**
      * Метод для поиска пользователя в системе по паспортным данным
+     * В аргументах принимаем поле паспорт типа String
+     * После проверки на наличие введенных данных в системе
      * @return паспортные данные
      */
     public User findByPassport(String passport) {
@@ -64,6 +75,7 @@ public class BankService {
 
     /**
      * Метод для поиска пользователя в системе по реквизитам
+     * В аргументах принимаем поле паспорт типа String и поле реквизиты типа String
      * @return аккаунт пользователя (если такой существует в системе)
      */
     public Account findByRequisite(String passport, String requisite) {
