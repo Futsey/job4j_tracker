@@ -23,30 +23,18 @@ public class Account {
         this.balance = balance;
     }
 
-    /**
-     * Метод для чтения реквизитов пользователя
-     */
     public String getRequisite() {
         return requisite;
     }
 
-    /**
-     * Метод для записи реквизитов пользователя
-     */
     public void setRequisite(String requisite) {
         this.requisite = requisite;
     }
 
-    /**
-     * Метод для получения баланса счета пользователя
-     */
     public double getBalance() {
         return balance;
     }
 
-    /**
-     * Метод для изменения баланса счета пользователя
-     */
     public void setBalance(double balance) {
         this.balance = balance;
     }

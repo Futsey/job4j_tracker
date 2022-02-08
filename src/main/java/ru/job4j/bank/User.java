@@ -22,30 +22,18 @@ public class User {
         this.username = username;
     }
 
-    /**
-     * Метод для записи личных данных пользователя (паспорт пользователя)
-     */
     public void setPassport(String passport) {
         this.passport = passport;
     }
 
-    /**
-     * Метод для чтения личных данных пользователя (паспорт пользователя)
-     */
     public String getPassport() {
         return passport;
     }
 
-    /**
-     * Метод для записи личных данных пользователя (имя пользователя)
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * Метод для чтения личных данных пользователя (имя пользователя)
-     */
     public String getUsername() {
         return username;
     }
