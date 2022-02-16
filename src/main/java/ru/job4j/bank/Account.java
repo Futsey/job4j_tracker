@@ -17,6 +17,7 @@ public class Account {
     /**
      * Для автоматической инициализации переменных конструктор явно изменен
      * на конструктор с указанием полей реквизитов и баланса
+     * @param requisite,balance
      */
     public Account(String requisite, double balance) {
         this.requisite = requisite;
