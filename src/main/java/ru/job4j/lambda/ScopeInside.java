@@ -7,11 +7,11 @@ public class ScopeInside {
     public static void main(String[] args) {
         int[] number = {1, 2, 3};
         int total = 0;
-        for (int i = 0; i < number.length; i++) {
+        for (int i : number) {
             int num = i;
             int rsl = total;
             total = add(
-                    () -> rsl + number[num]
+                    () -> rsl + num
             );
         }
         System.out.println(total);
