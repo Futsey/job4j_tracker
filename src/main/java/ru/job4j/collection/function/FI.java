@@ -22,11 +22,8 @@ public class FI {
         Arrays.sort(atts, comparator);
         System.out.println(Arrays.toString(atts));
 
-        Comparator<Attachment> cmpDescSize = (left, right) -> Integer.compare(right.getSize(), left.getSize());
-        Arrays.sort(atts, cmpDescSize);
-        System.out.println("cmpDescSize: " + Arrays.toString(atts));
+        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(right.length(), left.length());
 
         Comparator<String> cmpText = (left, right) -> left.compareTo(right);
-        System.out.println("cmpText: " + Arrays.toString(atts));
     }
 }
