@@ -23,11 +23,19 @@ public class JobSorter {
         Collections.sort(secondJob, new JobDescByName().thenComparing(new JobDescByPriority()));
         System.out.println("После комбинированной сортировки: " + secondJob);
 
+        Comparator<Job> compareName = Comparator.comparing(Job::getName);
+        Comparator<Job> comparePriority = Comparator.comparingInt(Job::getPriority);
+        Comparator<Job> combine = compareName.thenComparing(comparePriority);
+        jobs.sort(combine);
+
+        /*
+        * OUTDATE CODE
         Comparator<Job> comb = new JobDescByNameLn()
                 .thenComparing(new JobDescByName())
                 .thenComparing(new JobAscByName())
                 .thenComparing(new JobDescByPriority())
                 .thenComparing(new JobAscByPriority());
         Collections.sort(jobs, comb);
+        */
     }
 }

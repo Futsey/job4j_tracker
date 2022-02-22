@@ -37,5 +37,4 @@ public class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("Bra");
         assertTrue(persons.isEmpty());
     }
-
 }
