@@ -19,15 +19,15 @@ public class FunctionInDiapasonTest {
 
     @Test
     public void whenQuadraticFunctionThenQuadraticResults() {
-        List<Double> result = FunctionInDiapason.functionInDiapason(2, 6, x -> 2 * Math.abs(x) + 3 * x + 1);
-        List<Double> expected = Arrays.asList(11D, 16D, 21D, 26D);
+        List<Double> result = FunctionInDiapason.functionInDiapason(2, 6, x -> 2 * Math.pow(x, 2) + 3 * x + 1);
+        List<Double> expected = Arrays.asList(15D, 28D, 45D, 66D);
         assertThat(result, is(expected));
     }
 
     @Test
     public void whenExponentialFunctionThenExponentialResults() {
-        List<Double> result = FunctionInDiapason.functionInDiapason(3, 9, x -> 3 * Math.abs(x));
-        List<Double> expected = Arrays.asList(9D, 12D, 15D, 18D, 21D, 24D);
+        List<Double> result = FunctionInDiapason.functionInDiapason(3, 5, x -> Math.pow(3, x));
+        List<Double> expected = Arrays.asList(27D, 81D);
         assertThat(result, is(expected));
     }
 }
