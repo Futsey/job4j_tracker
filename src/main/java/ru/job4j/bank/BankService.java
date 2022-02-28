@@ -63,7 +63,17 @@ public class BankService {
      * В аргументах принимаем поле паспорт типа String
      * После проверки на наличие введенных данных в системе
      * @return паспортные данные
+     * или значение null, если пользователь не найден
      */
+
+    public User findByPassport(String passport) {
+        return users.keySet()
+                .stream()
+                .filter(u -> u.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
+    }
+/* OUTDATE CODE
     public User findByPassport(String passport) {
         for (User el : users.keySet()) {
             if (passport.equals(el.getPassport())) {
@@ -72,12 +82,27 @@ public class BankService {
         }
         return null;
     }
+ */
 
     /**
      * Метод для поиска пользователя в системе по реквизитам
      * В аргументах принимаем поле паспорт типа String и поле реквизиты типа String
      * @return аккаунт пользователя (если такой существует в системе)
+     * или значение null, если пользователь не найден
      */
+
+    public Account findByRequisite(String passport, String requisite) {
+        User user = findByPassport(passport);
+        if (user != null) {
+            return users.get(user)
+                    .stream()
+                    .filter(u -> u.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
+    }
+/* OUTDATE CODE
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -90,6 +115,7 @@ public class BankService {
         }
         return null;
     }
+     */
 
     /**
      * Метод для пополнения баланса пользователя со счета другого пользователя, где задействован метод:
