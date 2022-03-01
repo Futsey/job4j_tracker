@@ -43,16 +43,7 @@ public class College {
                 .findFirst()
                 .get();
     }
-/* OUTDATE CODE
-    public Student findByAccount(String account) {
-        for (Student s : students.keySet()) {
-            if (s.getAccount().equals(account)) {
-                return s;
-            }
-        }
-        return null;
-    }
- */
+
     /**
      * Метод реализует поиск по значению поля name в классе Student:
      * @see Student
@@ -72,20 +63,6 @@ public class College {
         }
         return null;
     }
-/* OUTDATE CODE
-    public Subject findBySubjectName(String account, String name) {
-        Student a = findByAccount(account);
-        if (a != null) {
-            Set<Subject> subjects = students.get(a);
-            for (Subject s : subjects) {
-                if (s.getName().equals(name)) {
-                    return s;
-                }
-            }
-        }
-        return null;
-    }
- */
 
     public static void main(String[] args) {
         Map<Student, Set<Subject>> students = Map.of(new Student("Student", "000001", "201-18-15"),
