@@ -15,31 +15,17 @@ public class Card {
 
     public static void main(String[] args) {
 
-        String[] levels = {"level 1", "level 2", "level 3"};
-        String[] tasks = {"task 1", "task 2", "task 3", "task 4"};
-        Stream.of(levels)
-                .flatMap(level -> Stream.of(tasks)
-                        .map(task -> "Stream.of: " + level + " " + task))
-                .forEach(System.out::println);
-
-        Arrays.stream(levels)
-                .flatMap(level -> Stream.of(tasks)
-                        .map(task -> "Arrays.stream: " + level + " " + task))
-                .forEach(System.out::println);
-
         Stream.of(Suit.values())
                 .flatMap(level -> Stream.of(Value.values())
-                .map(task -> "Stream.of(enum): " + level + " " + task))
+                .map(task -> "Stream.of(enum): " + new Card(level, task)))
                 .forEach(System.out::println);
+    }
 
-/* OUTDATE CODE
-        String[] levels = {"level 1", "level 2", "level 3"};
-        String[] tasks = {"task 1", "task 2", "task 3", "task 4"};
-        for (String level : levels) {
-            for (String task : tasks) {
-                System.out.println(level + " " + task);
-            }
-        }
-         */
+    @Override
+    public String toString() {
+        return "Card{"
+                + "suit=" + suit
+                + ", value=" + value
+                + '}';
     }
 }
