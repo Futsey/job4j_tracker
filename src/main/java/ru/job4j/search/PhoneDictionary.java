@@ -28,24 +28,10 @@ public class PhoneDictionary {
             }
         }
         return result;
-
-        /*
-        * OUTDATE CODE
-        ArrayList<Person> rst = new ArrayList<Person>();
-        for (Person value : persons) {
-            if (value.getName().contains(key)
-                    || value.getSurname().contains(key)
-                    || value.getPhone().contains(key)
-                    || value.getAdress().contains(key)) {
-                rst.add(value);
-            }
-        }
-        return rst;
-         */
     }
 
     public static void main(String[] args) {
-        PhoneDictionary vasya = new PhoneDictionary();
+        var vasya = new PhoneDictionary();
         vasya.add(new Person("Vasya", "Vasechkin", "333333", "Omsk"));
         vasya.find("Va");
     }
