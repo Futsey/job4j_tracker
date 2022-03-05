@@ -3,6 +3,8 @@ package ru.job4j.map;
 import ru.job4j.bank.User;
 
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -36,12 +38,11 @@ public class College {
      * @see Student
      * @param account
      */
-    public Student findByAccount(String account) {
+    public Optional<Student> findByAccount(String account) {
         return students.keySet()
                 .stream()
-                .filter(a -> a.getAccount().equals(account))
-                .findFirst()
-                .get();
+                .filter(a ->  a.getAccount().equals(account))
+                .findFirst();
     }
 
     /**
@@ -52,16 +53,15 @@ public class College {
      * @param name
      */
 
-    public Subject findBySubjectName(String account, String name) {
-        Student a = findByAccount(account);
-        if (a != null) {
-            return students.get(a)
+    public Optional<Subject> findBySubjectName(String account, String name) {
+        Optional<Student> a = findByAccount(account);
+        if (a.isPresent()) {
+            return students.get(a.get())
                     .stream()
-                    .filter(s -> s.getName().equals(name))
-                    .findFirst()
-                    .orElse(null);
+                    .filter(el -> name.equals(el.getName()))
+                    .findFirst();
         }
-        return null;
+        return Optional.empty();
     }
 
     public static void main(String[] args) {
@@ -72,9 +72,9 @@ public class College {
                 )
         );
         College college = new College(students);
-        Student student = college.findByAccount("000001");
+        Optional<Student> student = college.findByAccount("000001");
         System.out.println("Найденный студент: " + student);
-        Subject english = college.findBySubjectName("000001", "English");
-        System.out.println("Оценка по найденному предмету: " + english.getScore());
+        Optional<Subject> english = college.findBySubjectName("000001", "English");
+        System.out.println("Оценка по найденному предмету: " + english);
     }
 }
