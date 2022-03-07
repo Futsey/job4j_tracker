@@ -1,9 +1,7 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 /**
  * Класс описывает банковские операции, которые может совершать класс:
  * @see User
@@ -49,9 +47,9 @@ public class BankService {
      * {@link #findByPassport(String)}
      */
     public void addAccount(String passport, Account account) {
-        User accExist = findByPassport(passport);
-        if (accExist != null) {
-            List<Account> newAcc = users.get(accExist);
+        Optional<User> accExist = findByPassport(passport);
+        if (accExist.isPresent()) {
+            List<Account> newAcc = users.get(accExist.get());
             if (!newAcc.contains(account)) {
                 newAcc.add(account);
             }
@@ -66,23 +64,12 @@ public class BankService {
      * или значение null, если пользователь не найден
      */
 
-    public User findByPassport(String passport) {
+    public Optional<User> findByPassport(String passport) {
         return users.keySet()
                 .stream()
                 .filter(u -> u.getPassport().equals(passport))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
-/* OUTDATE CODE
-    public User findByPassport(String passport) {
-        for (User el : users.keySet()) {
-            if (passport.equals(el.getPassport())) {
-                return el;
-            }
-        }
-        return null;
-    }
- */
 
     /**
      * Метод для поиска пользователя в системе по реквизитам
@@ -91,31 +78,13 @@ public class BankService {
      * или значение null, если пользователь не найден
      */
 
-    public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            return users.get(user)
-                    .stream()
-                    .filter(u -> u.getRequisite().equals(requisite))
-                    .findFirst()
-                    .orElse(null);
-        }
-        return null;
+    public Optional<Account> findByRequisite(String passport, String requisite) {
+        Optional<User> user = findByPassport(passport);
+        return user.flatMap(value -> users.get(value)
+                .stream()
+                .filter(u -> u.getRequisite().equals(requisite))
+                .findFirst());
     }
-/* OUTDATE CODE
-    public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> account = users.get(user);
-            for (Account accToFind : account) {
-                if (requisite.equals(accToFind.getRequisite())) {
-                    return accToFind;
-                }
-            }
-        }
-        return null;
-    }
-     */
 
     /**
      * Метод для пополнения баланса пользователя со счета другого пользователя, где задействован метод:
@@ -124,13 +93,13 @@ public class BankService {
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-        Account srcAcc = findByRequisite(srcPassport, srcRequisite);
-        Account destAcc = findByRequisite(destPassport, destRequisite);
-        if ((srcAcc != null) && (destAcc != null) && (srcAcc.getBalance() >= amount)) {
-            srcAcc.setBalance(srcAcc.getBalance() - amount);
-            destAcc.setBalance(destAcc.getBalance() + amount);
-            return true;
-        }
+        Optional<Account> srcAcc = findByRequisite(srcPassport, srcRequisite);
+        Optional<Account> destAcc = findByRequisite(destPassport, destRequisite);
+        if ((srcAcc.isPresent()) && (destAcc.isPresent()) && (srcAcc.get().getBalance() >= amount)) {
+                srcAcc.get().setBalance(srcAcc.get().getBalance() - amount);
+                destAcc.get().setBalance(destAcc.get().getBalance() + amount);
+                return true;
+                }
         return false;
     }
 }
