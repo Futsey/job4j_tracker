@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -20,6 +21,13 @@ public class SqlTracker implements Store, AutoCloseable {
      * поле cn является основным соединением с БД
      */
     private Connection cn;
+
+    public SqlTracker() {
+    }
+
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
 
     /**
      * Метод начинает соединение с БД
@@ -199,5 +207,22 @@ public class SqlTracker implements Store, AutoCloseable {
                 resultSet.getString("name"),
                 resultSet.getTimestamp("created").toLocalDateTime()
         );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SqlTracker that = (SqlTracker) o;
+        return Objects.equals(cn, that.cn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cn);
     }
 }
