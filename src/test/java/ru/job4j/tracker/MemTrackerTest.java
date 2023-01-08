@@ -90,36 +90,46 @@ public class MemTrackerTest {
     @Test
     public void whenTestItemAscByName() {
         List<Item> items = new ArrayList<Item>();
-        items.add(new Item("Beans"));
-        items.add(new Item("Rice"));
-        items.add(new Item("Peas"));
-        items.add(new Item("Groats"));
-        items.add(new Item("Millet"));
-        Collections.sort(items, new ItemAscByName());
+        Item beans = new Item("Beans");
+        items.add(beans);
+        Item rice = new Item("Rice");
+        items.add(rice);
+        Item peas = new Item("Peas");
+        items.add(peas);
+        Item groats = new Item("Groats");
+        items.add(groats);
+        Item millet = new Item("Millet");
+        items.add(millet);
+        Collections.sort(items, new ItemDescByName());
         List<Item> expected = new ArrayList<Item>();
-        expected.add(new Item("Beans"));
-        expected.add(new Item("Groats"));
-        expected.add(new Item("Millet"));
-        expected.add(new Item("Peas"));
-        expected.add(new Item("Rice"));
+        expected.add(rice);
+        expected.add(peas);
+        expected.add(millet);
+        expected.add(groats);
+        expected.add(beans);
         assertEquals(expected, items);
     }
 
     @Test
     public void whenTestItemDescByName() {
         List<Item> items = new ArrayList<Item>();
-        items.add(new Item("Beans"));
-        items.add(new Item("Rice"));
-        items.add(new Item("Peas"));
-        items.add(new Item("Groats"));
-        items.add(new Item("Millet"));
+        Item beans = new Item("Beans");
+        items.add(beans);
+        Item rice = new Item("Rice");
+        items.add(rice);
+        Item peas = new Item("Peas");
+        items.add(peas);
+        Item groats = new Item("Groats");
+        items.add(groats);
+        Item millet = new Item("Millet");
+        items.add(millet);
         Collections.sort(items, new ItemDescByName());
         List<Item> expected = new ArrayList<Item>();
-        expected.add(new Item("Rice"));
-        expected.add(new Item("Peas"));
-        expected.add(new Item("Millet"));
-        expected.add(new Item("Groats"));
-        expected.add(new Item("Beans"));
+        expected.add(rice);
+        expected.add(peas);
+        expected.add(millet);
+        expected.add(groats);
+        expected.add(beans);
         assertEquals(expected, items);
     }
 
