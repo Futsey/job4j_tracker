@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -9,6 +11,7 @@ import java.util.Objects;
  * @author ANDREW PETRUSHIN (JOB4J Project)
  * @version 1.0
  */
+@Data
 public class Item {
     /**
      * поле FORMATTER редактирует конечный вид даты создания заявки
@@ -38,51 +41,5 @@ public class Item {
         this.id = id;
         this.name = name;
         this.created = created;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object k) {
-        if (this == k) {
-            return true;
-        }
-        if (k == null || getClass() != k.getClass()) {
-            return false;
-        }
-        Item item = (Item) k;
-        return id == item.id && name.equals(item.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Item {"
-                + "id=" + id
-                + ", name='" + name + '\''
-                + ", created = " + created.format(FORMATTER)
-                + '}';
     }
 }
