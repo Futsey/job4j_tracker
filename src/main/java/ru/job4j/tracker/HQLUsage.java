@@ -41,7 +41,6 @@ public class HQLUsage {
             delete(session, 3);
             selectAll(session);
 
-
             System.out.println("done");
             session.close();
         } finally {
@@ -99,7 +98,4 @@ public class HQLUsage {
             session.getTransaction().rollback();
         }
     }
-
-
-
 }
