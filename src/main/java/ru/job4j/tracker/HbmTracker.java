@@ -7,12 +7,12 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HbmTracker implements Store, AutoCloseable {
 
     private static final String SELECT_ALL = "FROM Item";
+    private static final String SELECT_WHERE_NAME = "FROM Item WHERE name = :key";
     private static final String UPDATE = "UPDATE Item SET name = :fname, created = :fcreated WHERE id = :fId";
     private static final String DELETE = "DELETE Item WHERE id = :fId";
 
@@ -28,9 +28,9 @@ public class HbmTracker implements Store, AutoCloseable {
             session.beginTransaction();
             session.save(item);
             session.getTransaction().commit();
-            session.close();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
             session.close();
         }
         return item;
@@ -42,16 +42,15 @@ public class HbmTracker implements Store, AutoCloseable {
         Session session = sf.openSession();
         try {
             session.beginTransaction();
-            session.createQuery(UPDATE)
+            rsl = session.createQuery(UPDATE)
                     .setParameter("fname", item.getName())
                     .setParameter("fcreated", item.getCreated())
                     .setParameter("fId", item.getId())
-                    .executeUpdate();
+                    .executeUpdate() != 0;
             session.getTransaction().commit();
-            rsl = true;
-            session.close();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
             session.close();
         }
         return rsl;
@@ -63,14 +62,13 @@ public class HbmTracker implements Store, AutoCloseable {
         Session session = sf.openSession();
         try {
             session.beginTransaction();
-            session.createQuery(DELETE)
+            rsl = session.createQuery(DELETE)
                     .setParameter("fId", id)
-                    .executeUpdate();
+                    .executeUpdate() != 0;
             session.getTransaction().commit();
-            rsl = true;
-            session.close();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
             session.close();
         }
         return rsl;
@@ -79,24 +77,17 @@ public class HbmTracker implements Store, AutoCloseable {
     @Override
     public List<Item> findAll() {
         Session session = sf.openSession();
-        List<Item> allItemsList = new ArrayList<>();
-        Query query = session.createQuery(SELECT_ALL);
-        for (Object st : query.list()) {
-            allItemsList.add((Item) st);
-        }
-        return allItemsList;
+        Query<Item> query = session.createQuery(SELECT_ALL, Item.class);
+        return query.list();
     }
 
     @Override
     public List<Item> findByName(String key) {
         Session session = sf.openSession();
-        List<Item> itemList = new ArrayList<>();
-        Query query = session.createQuery(SELECT_ALL);
-        for (Object st : query.list()) {
-            if (st.equals(key)) {
-                itemList.add((Item) st);
-            }
-        }
+        List<Item> itemList = session.createQuery(SELECT_WHERE_NAME, Item.class)
+                .setParameter("key", key)
+                .list();
+        session.close();
         return itemList;
     }
 
