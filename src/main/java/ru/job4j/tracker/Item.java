@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import lombok.Builder;
 import lombok.Data;
 import ru.job4j.toone.User;
 
@@ -32,7 +33,7 @@ public class Item {
     private String name;
     private LocalDateTime created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "participates",
             joinColumns = { @JoinColumn(name = "item_id") },
