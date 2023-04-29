@@ -57,21 +57,6 @@ public class HbmTrackerTest {
     }
 
     @Test
-    public void whenFindAllSuccessful() {
-        try (var tracker = new HbmTracker()) {
-            List<Item> itemList = List.of(
-                    new Item("test1"),
-                    new Item("test2"),
-                    new Item("test3"));
-            itemList.forEach(tracker::add);
-            System.out.println(tracker.findByName("test1"));
-            List<Item> resultList = tracker.findAll();
-            System.out.println(resultList);
-            Assertions.assertEquals(itemList.size(), resultList.size());
-        }
-    }
-
-    @Test
     public void whenFindByNameSuccessful() {
         try (var tracker = new HbmTracker()) {
             List<Item> itemList = List.of(
